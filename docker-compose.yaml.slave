@@ -1,13 +1,15 @@
 version: '3.7'
 
 services:
-  apcupsd-slave:
+  apcupsd:
     image: gregewing/apcupsd:latest
     container_name: apcupsd-slave
     environment:
       - UPSNAME=from_master
       - UPSCABLE=ether
       - UPSTYPE=net
-      - DEVICE=192.168.1.xxx:3551  # IP of master host/container
-      - TZ=America/Toronto
+      - DEVICE=192.168.1.xxx:3551 # ← Replace with master's IP
+      - TZ=America/Toronto # ← Update for your timezone
+    # volumes:  # Uncomment to persist configuration
+    #   - /etc/apcupsd:/etc/apcupsd
     restart: unless-stopped
