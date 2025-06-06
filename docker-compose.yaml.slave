@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  apcupsd-slave:
+    image: gregewing/apcupsd:latest
+    container_name: apcupsd-slave
+    environment:
+      - UPSNAME=from_master
+      - UPSCABLE=ether
+      - UPSTYPE=net
+      - DEVICE=192.168.1.xxx:3551  # IP of master host/container
+      - TZ=America/Toronto
+    restart: unless-stopped
