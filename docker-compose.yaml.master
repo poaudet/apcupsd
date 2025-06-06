@@ -5,15 +5,17 @@ services:
     image: gregewing/apcupsd:latest
     container_name: apcupsd-master
     devices:
-      - /dev/usb/hidraw0 #change to fit with yours
+      - /dev/usb/hidraw0 # ← Update this for your device
     ports:
       - 3551:3551
     environment:
-      - UPSNAME=backups
+      - UPSNAME=ups.local
       - UPSCABLE=usb
       - UPSTYPE=usb
-      - DEVICE=
-      - NETSERVER=on
+      - DEVICE=/dev/hidraw0 # ← Update this for your device
+      - NETSERVER=ON
       - NISIP=0.0.0.0
-      - TZ=America/Toronto
+      - TZ=America/Toronto # ← Update for your timezone
+    # volumes:  # Uncomment to persist configuration
+    #   - /etc/apcupsd:/etc/apcupsd
     restart: unless-stopped
