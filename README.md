@@ -1,3 +1,5 @@
+>🚩⚠️ The concept below is "working" but it do not gracefully shutdown the hosts because docker cannot OOTB do that! I finally revert it back to a host installation rather than a dockerized setup
+
 # 🖥️ apcupsd Docker Stack
 
 Monitor and manage your APC UPS using `apcupsd` in Docker. This stack supports both **master** (USB-connected) and **slave** (network-connected) configurations, enabling graceful shutdowns across multiple systems.
